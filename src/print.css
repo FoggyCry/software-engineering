@@ -1,0 +1,2 @@
+#print-root{display:none}
+@media print{@page{size:A4;margin:15mm}body{background:white!important;color:black!important}#app,dialog,#notice{display:none!important}#print-root{display:block!important;color:black;font-family:'Microsoft YaHei',sans-serif}#print-root h1{font-size:22px;margin-bottom:12px}#print-root p{font-size:13px;color:black;overflow-wrap:anywhere}.print-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:20mm;row-gap:13mm;margin-top:15mm}.print-grid>div{font-size:18px;break-inside:avoid} }

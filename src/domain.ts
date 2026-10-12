@@ -60,8 +60,9 @@ export function grade(questions:Question[]):Result {
 export function attempts(p:Practice):Attempt[] { return p.questions.map(q=>({practiceId:p.id,questionId:q.id,profileId:p.profileId,questionKey:key(q),submittedAt:p.submittedAt!,ordinal:q.ordinal,kind:p.kind,a:q.a,b:q.b,op:q.op,expected:q.expected,answer:q.answer,sourceGrade:q.sourceGrade,ruleVersion:q.ruleVersion})); }
 export function reduceWrong(events:Attempt[]):Wrong|null {
   let w:Wrong|null=null;
+  let wrongCount=0;
   for(const e of [...events].sort((a,b)=>a.submittedAt.localeCompare(b.submittedAt)||a.practiceId.localeCompare(b.practiceId)||a.ordinal-b.ordinal)){
-    if(e.answer===null||e.answer!==e.expected)w={profileId:e.profileId,questionKey:e.questionKey,a:e.a,b:e.b,op:e.op,expected:e.expected,wrongCount:(w?.wrongCount??0)+1,lastWrongAt:e.submittedAt,needsReview:true,sourceGrade:e.sourceGrade,ruleVersion:e.ruleVersion,representativePracticeId:e.practiceId,representativeQuestionId:e.questionId,pendingKey:1,reviewSortTime:-Date.parse(e.submittedAt)};
+    if(e.answer===null||e.answer!==e.expected)w={profileId:e.profileId,questionKey:e.questionKey,a:e.a,b:e.b,op:e.op,expected:e.expected,wrongCount:++wrongCount,lastWrongAt:e.submittedAt,needsReview:true,sourceGrade:e.sourceGrade,ruleVersion:e.ruleVersion,representativePracticeId:e.practiceId,representativeQuestionId:e.questionId,pendingKey:1,reviewSortTime:-Date.parse(e.submittedAt)};
     else if(w&&e.kind==='review'){w.needsReview=false;w.pendingKey=0;}
   }return w;
 }
