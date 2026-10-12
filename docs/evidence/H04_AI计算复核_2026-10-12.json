@@ -1,0 +1,15 @@
+{
+  "executor": "AI via Python",
+  "date": "2026-10-12",
+  "human_verification": "not completed",
+  "values": {
+    "99*9": 891,
+    "891/9": 99,
+    "correct_percent": "60.0",
+    "answered": 28,
+    "submit_date_shanghai": "2026-10-12",
+    "remaining_1095_days": 17150,
+    "remaining_1096_days": 17120
+  },
+  "software_behavior_tested": false
+}

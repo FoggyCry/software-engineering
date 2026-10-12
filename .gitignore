@@ -11,4 +11,7 @@ work/
 deliverables/*v1.0*
 deliverables/*.txt
 .DS_Store
+hosting/
+.openai/*.tar*
+monitoring/
 
