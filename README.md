@@ -2,9 +2,11 @@
 
 一至三年级的浏览器口算练习工具。生成题单、在线答题、自动批改、错题复习及历史记录均在本地完成。
 
-**公开试用地址**：https://foggycry-little-steps.eager-apple-7954.chatgpt.site （部署状态和实际测试见 `docs/test-report.md`）  
-**版本**：0.1.0  
-**源码仓库**：https://gitee.com/foggycry/software-engineering
+**公开试用地址**：https://foggycry.github.io/software-engineering/ （迁移部署状态和实际测试见 `docs/test-report-v0.1.1.md`）  
+**版本**：0.1.1  
+**源码与版本记录**：[GitHub](https://github.com/FoggyCry/software-engineering) · [Gitee](https://gitee.com/foggycry/software-engineering)
+
+华科软件工程作业。GitHub Pages 提供网站托管；GitHub 和 Gitee 同步保存源码及版本记录。
 
 ## 功能
 
@@ -27,7 +29,7 @@ npm ci
 npm run dev
 ```
 
-终端显示本地URL，通常为 `http://127.0.0.1:5173`。浏览器打开即可。开发服务器仅监听本机。
+终端显示本地URL，通常为 `http://127.0.0.1:5173/software-engineering/`。浏览器打开即可。开发服务器仅监听本机。
 
 ```sh
 npm test
@@ -52,11 +54,15 @@ npm run test:e2e -- e2e/app.spec.ts
 
 复制 `.env.example` 为 `.env.local`，配置 `VITE_MAINTAINER_EMAIL` 和 `VITE_PUBLIC_URL`，然后执行 `npm run build`。环境变量在构建时嵌入公开资源，不可放密钥。首次发布的维护邮箱使用当前仓库Git作者的公开邮箱；该地址仅展示/复制，不自动发邮件，也不附带学习记录。可在下一次构建前覆盖。
 
-`dist/` 为静态部署产物。任意支持HTTPS的静态主机可部署；无需Node运行时、数据库服务器或第三方API。Sites仅接收经过检查的 `dist/` 和托管manifest，Gitee保存源代码与文档。隔离发布目录 `hosting/` 不提交；不得向托管源仓库复制整个工作文件夹。
+`dist/` 为静态部署产物。任意支持HTTPS的静态主机可部署；无需Node运行时、数据库服务器或第三方API。GitHub Actions 在 main 推送后测试、构建并上传 dist，GitHub Pages 托管。项目路径固定为 /software-engineering/；详见 [部署说明](docs/deployment.md)。历史 Sites 托管资料与旧站保留，旧站不随本次更新。
 
 生产HTML含CSP，禁止外部脚本、表单提交、插件对象及非同源连接。建议主机额外设置 `X-Content-Type-Options: nosniff`、`Referrer-Policy: no-referrer`、`frame-ancestors 'none'`（需响应头，meta不支持）。HTML应重新验证缓存，哈希资源可长期缓存；保留上一版资源以供已打开页面使用。
 
 更新部署保持相同协议/域名/端口；换源时需要先从旧源导出数据。退回旧前端前必须检查数据库版本兼容性。初始数据库版本及备份schemaVersion均为1，含义不同。
+
+## 旧站数据迁移
+
+[旧站](https://foggycry-little-steps.eager-apple-7954.chatgpt.site)保留，不自动迁移数据。请在旧站同一浏览器打开“家长模式 → 导出备份”，然后在新站“家长模式 → 恢复备份”选择该 JSON 文件并确认。恢复会替换新站全部当前记录；新站已有数据时先导出备份，两份文件分别保管。本版本不提供自动合并。学习数据保存在当前浏览器、当前网站域名（准确说是协议、主机和端口组成的源）下，仓库同步不包含学习数据。
 
 ## 数据边界
 
@@ -79,6 +85,6 @@ G1支持20以内加减；G2支持100以内加减、表内乘除；G3支持1000�
 | `tests/`、`e2e/` | DT编号对应的规则、服务、浏览器与性能测试 |
 | `deliverables/` | 冻结需求v1.1和设计v1.1 |
 | `docs/changes.md` | 实现阶段与设计的差异及理由 |
-| `docs/test-report.md` | 实际执行结果和验收缺口 |
+| `docs/test-report-v0.1.1.md` | 本次迁移验证及验收缺口；v0.1.0报告作为历史保留 |
 
 可用性单次探测：`node scripts/check-site.mjs https://你的域名/`。若需满足NFR06，应在独立常在线环境每5分钟调度一次并保存完整30天记录；本次交付不伪造30天结果。

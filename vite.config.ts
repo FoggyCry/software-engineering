@@ -1,5 +1,11 @@
 import { defineConfig } from "vite";
 export default defineConfig(({ command }) => ({
+  base: "/software-engineering/",
+  define: {
+    "import.meta.env.VITE_APP_VERSION": JSON.stringify(
+      process.env.npm_package_version,
+    ),
+  },
   plugins: [
     {
       name: "production-security-policy",

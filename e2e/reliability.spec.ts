@@ -3,9 +3,9 @@ test("NFR04 100 saved refreshes, 20 aborted submissions and 10 backup roundtrips
   page,
 }) => {
   test.setTimeout(180000);
-  await page.goto("/");
+  await page.goto("./");
   const ids = await page.evaluate(async () => {
-    const { Client } = await import("/src/client.ts" as string);
+    const { Client } = await import("/software-engineering/src/client.ts" as string);
     const c = new Client();
     await c.call("health.inspect");
     const profile = await c.call("profile.create", {
@@ -28,7 +28,7 @@ test("NFR04 100 saved refreshes, 20 aborted submissions and 10 backup roundtrips
   for (let i = 0; i < 100; i++) {
     await page.evaluate(
       async ({ id, value }) => {
-        const { Client } = await import("/src/client.ts" as string);
+        const { Client } = await import("/software-engineering/src/client.ts" as string);
         const c = new Client();
         const p = await c.call("practice.get", { id });
         await c.call("practice.save", {
@@ -45,14 +45,14 @@ test("NFR04 100 saved refreshes, 20 aborted submissions and 10 backup roundtrips
     );
     await page.reload();
     const value = await page.evaluate(async (id) => {
-      const { Client } = await import("/src/client.ts" as string);
+      const { Client } = await import("/software-engineering/src/client.ts" as string);
       const c = new Client();
       return (await c.call("practice.get", { id })).questions[0].answer;
     }, ids.practice);
     expect(value).toBe(i);
   }
   const counts = await page.evaluate(async (ids) => {
-    const { Service } = await import("/src/service.ts" as string);
+    const { Service } = await import("/software-engineering/src/service.ts" as string);
     const s = await Service.create();
     let aborted = 0,
       roundtrips = 0;

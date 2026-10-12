@@ -4,12 +4,12 @@ test("NFR02 50000-question fixture and 100 measured replacements/history queries
   page,
 }) => {
   test.setTimeout(240000);
-  await page.goto("/");
+  await page.goto("./");
   const result = await page.evaluate(async () => {
     // Test-only fixture/oracle modules; requests under measurement go through the real Worker.
-    const { Client } = await import("/src/client.ts" as string),
-      d = await import("/src/domain.ts" as string),
-      b = await import("/src/backup.ts" as string);
+    const { Client } = await import("/software-engineering/src/client.ts" as string),
+      d = await import("/software-engineering/src/domain.ts" as string),
+      b = await import("/software-engineering/src/backup.ts" as string);
     const c = new Client();
     await c.call("health.inspect");
     const pr = await c.call("profile.create", {
