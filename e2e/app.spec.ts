@@ -209,6 +209,7 @@ test("PAGES01 profiles, history, secure context and base-scoped assets", async (
   await expect(page.locator(".profile-row")).toHaveCount(1);
   await page.getByRole("button", { name: "拾光口算首页", exact: true }).click();
   await page.getByRole("button", { name: "开始练习", exact: false }).click();
+  await expect(page.locator("#answer")).toBeVisible();
   const p = (await records(page))[0];
   await page.locator("#answer").fill(String(p.questions[0].expected));
   await page.getByRole("button", { name: "提交答案 →", exact: true }).click();
