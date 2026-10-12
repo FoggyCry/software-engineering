@@ -156,7 +156,9 @@ test("DT07/08 print is read-only and learning data has no network requests", asy
   await expect(page.locator("#save-status")).toHaveText("已保存");
   const before = await records(page);
   await page.getByRole("button", { name: "打印题单", exact: true }).click();
-  await expect.poll(() => page.evaluate(() => (window as any).printed)).toBeTruthy();
+  await expect
+    .poll(() => page.evaluate(() => (window as any).printed))
+    .toBeTruthy();
   const printed = await page.evaluate(() => (window as any).printed);
   expect(printed).toContain("________");
   expect(printed).not.toContain("9999");
