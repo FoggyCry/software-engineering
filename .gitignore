@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+test-results/
+playwright-report/
+.env*
+!.env.example
+work/
+*.docx
+*.log
+deliverables/*v1.0*
+deliverables/*.txt
+.DS_Store
+
