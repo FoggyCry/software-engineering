@@ -1,6 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
-async function setup(page: Page) {
-  await page.goto("./");
+async function setup(page: Page, url = "./") {
+  await page.goto(url);
   await page.getByRole("button", { name: "我知道了", exact: true }).click();
   await page.getByRole("button", { name: "创建儿童档案" }).click();
   await page.getByRole("textbox", { name: "昵称", exact: true }).fill("小橙子");
@@ -164,6 +164,20 @@ test("DT07/08 print is read-only and learning data has no network requests", asy
   expect(printed).toContain("________");
   expect(printed).not.toContain("9999");
   expect(await records(page)).toEqual(before);
+  await page.getByRole("button", { name: "提交答案 →", exact: true }).click();
+  await page.getByRole("button", { name: "确认提交", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "又向前迈了一小步！" }),
+  ).toBeVisible();
+  const submitted = await records(page);
+  await page.getByRole("button", { name: "打印答案", exact: true }).click();
+  await expect
+    .poll(() => page.evaluate(() => (window as any).printed))
+    .toContain("参考答案");
+  expect(await page.evaluate(() => (window as any).printed)).not.toContain(
+    "________",
+  );
+  expect(await records(page)).toEqual(submitted);
   expect(outgoing).toEqual([]);
 });
 
@@ -228,9 +242,50 @@ test("PAGES01 profiles, history, secure context and base-scoped assets", async (
   await expect(
     page.getByRole("heading", { name: /你好，迁移测试/ }),
   ).toBeVisible();
+  await expect(page.locator(".hero-progress strong")).toHaveText(
+    "1 / 30 道已答",
+  );
   expect(failures).toEqual([]);
   expect(assets.length).toBeGreaterThan(0);
   expect(workers.length).toBeGreaterThan(0);
   for (const url of [...assets, ...workers])
     expect(url.startsWith(baseURL!)).toBe(true);
+});
+
+test("PAGES02 old-site backup transfers across origins without changing old data", async ({
+  page,
+  baseURL,
+}) => {
+  test.skip(
+    !process.env.OLD_SITE_URL,
+    "Only executed for the real migration with the old site URL",
+  );
+  await setup(page, process.env.OLD_SITE_URL!);
+  await page.getByRole("button", { name: "开始练习", exact: false }).click();
+  await page.locator("#answer").fill("9");
+  await expect(page.locator("#save-status")).toHaveText("已保存");
+  const oldRecords = await records(page);
+  await page.getByRole("button", { name: "← 返回首页", exact: true }).click();
+  await page.getByRole("button", { name: "家长模式", exact: true }).click();
+  const downloaded = page.waitForEvent("download");
+  await page.getByRole("button", { name: "导出备份 ↓", exact: true }).click();
+  const backupPath = await (await downloaded).path();
+  await setup(page, baseURL!);
+  expect(await records(page)).toEqual([]); // Different origins do not automatically share learning data.
+  await page.getByRole("button", { name: "家长模式", exact: true }).click();
+  await page.locator("#import-file").setInputFiles(backupPath!);
+  await page.getByRole("button", { name: "确认恢复", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: /还有一份普通练习草稿/ }),
+  ).toBeVisible();
+  expect((await records(page)).map((p) => p.questions)).toEqual(
+    oldRecords.map((p) => p.questions),
+  );
+  await page.getByRole("button", { name: /还有一份普通练习草稿/ }).click();
+  await expect(page.locator("#answer")).toHaveValue("9");
+  await page.goto(process.env.OLD_SITE_URL!);
+  await expect(
+    page.getByRole("button", { name: /还有一份普通练习草稿/ }),
+  ).toBeVisible();
+  expect(await records(page)).toEqual(oldRecords);
 });

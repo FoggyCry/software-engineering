@@ -1,0 +1,75 @@
+{
+  "kind": "Edge public checks; optional old-site case not selected",
+  "applicationCommit": "256bf6720ec7b03d02d9491d121e2406c87583c1",
+  "url": "https://foggycry.github.io/software-engineering/",
+  "stats": {
+    "startTime": "2026-10-12T13:56:51.460Z",
+    "duration": 10591.642,
+    "expected": 5,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "DT01-07 daily learning, draft recovery, grading, review, export/import",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3117,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "DT08 responsive keyboard UI, 360px overflow, offline continued practice",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1363,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "DT06 concurrent tabs reject stale draft edits",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1734,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "DT07/08 print is read-only and learning data has no network requests",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1164,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "PAGES01 profiles, history, secure context and base-scoped assets",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1643,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "PAGES02 old-site backup transfers across origins without changing old data",
+      "results": [
+        {
+          "status": "skipped",
+          "durationMs": 131,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

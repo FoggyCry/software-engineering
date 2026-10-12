@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-12T13:59:47.409Z",
+  "url": "https://foggycry.github.io/software-engineering/",
+  "httpStatus": 200,
+  "browser": "154.0.8037.98",
+  "title": "拾光口算 · 每天一点进步",
+  "secureContext": true,
+  "version": "数据保存在当前浏览器v0.1.1 · 本地学习空间",
+  "assets": [
+    "https://foggycry.github.io/software-engineering/assets/index-BCBaXK7e.js",
+    "https://foggycry.github.io/software-engineering/assets/index-BeLFTn2y.css"
+  ],
+  "csp": "default-src 'self'; script-src 'self'; worker-src 'self'; style-src 'self'; img-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'",
+  "workers": [
+    "https://foggycry.github.io/software-engineering/assets/worker-Bxw5k8eJ.js"
+  ]
+}

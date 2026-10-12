@@ -1,0 +1,25 @@
+{
+  "kind": "Local development server; not standard E1 environment",
+  "applicationCommit": "256bf6720ec7b03d02d9491d121e2406c87583c1",
+  "url": "http://127.0.0.1:4173/software-engineering/",
+  "stats": {
+    "startTime": "2026-10-12T13:58:09.864Z",
+    "duration": 14209.645,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "NFR02 50000-question fixture and 100 measured replacements/history queries",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 12109,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}
