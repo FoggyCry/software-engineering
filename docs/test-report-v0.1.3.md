@@ -11,7 +11,7 @@
 
 ## 发布验证
 
-正式地址：https://foggycry.github.io/software-engineering/ 。将在自动部署完成后补充实际公开站点结果，本地构建成功不等于已上线。
+正式地址：https://foggycry.github.io/software-engineering/ 。该版本完成本地测试后，用户再次要求更名为“马头口算”，后续工作转入 v0.1.4；未执行 v0.1.3 独立线上回归，不记为通过。自动部署 Actions 39251107380 已成功，本地构建不替代线上验收。
 
 ## 边界
 
