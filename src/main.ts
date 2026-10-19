@@ -129,7 +129,7 @@ function shell(body: string) {
     ["history", "学习记录", "history"],
     ["settings", "家长模式", "settings"],
   ];
-  app.innerHTML = `<aside class="sidebar"><button class="brand" data-nav="home" aria-label="滚木口算首页"><span class="brand-mark">木</span><span>滚木口算<small>GUNMU MATH</small></span></button><p class="nav-label">每一天，都有新进步</p><nav>${nav.map(([id, label, ico]) => `<button data-nav="${id}" class="nav-item ${view === id ? "active" : ""}"><span aria-hidden="true">${icon(ico)}</span>${label}</button>`).join("")}</nav><div class="sidebar-note"><span class="leaf">✦</span><strong>慢慢来，也很棒。</strong><p>练习没有倒计时，<br>每一步都算数。</p></div><footer>数据保存在当前浏览器<br><span>v${h(import.meta.env.VITE_APP_VERSION)} · 本地学习空间</span></footer></aside><div class="workspace"><header class="topbar"><div class="breadcrumb">学习空间 <span>/</span> ${view === "practice" ? "口算练习" : view === "result" ? "练习结果" : (nav.find((n) => n[0] === view)?.[1] ?? "学习首页")}</div><div class="profile-tools">${selected ? `<label class="sr-only" for="profile-select">选择儿童档案</label><select id="profile-select" ${temporary ? "disabled" : ""}>${profiles.map((p) => `<option value="${p.id}" ${selected?.id === p.id ? "selected" : ""}>${h(p.nickname)} · ${gname(p.grade)}</option>`).join("")}</select>` : '<span class="quiet">还没有儿童档案</span>'}<span class="avatar">${h(selected?.nickname.slice(0, 1) ?? "＋")}</span></div></header>${temporary ? '<div class="banner warning">临时练习 · 刷新后会丢失，不计入正式每日记录。<button data-action="recover" class="text-button">恢复检查</button></div>' : ""}<main id="main">${body}</main><footer class="mobile-footer">滚木口算 · 每天一点进步</footer></div>`;
+  app.innerHTML = `<aside class="sidebar"><button class="brand" data-nav="home" aria-label="老兵口算首页"><span class="brand-mark">兵</span><span>老兵口算<small>LAOBING MATH</small></span></button><p class="nav-label">每一天，都有新进步</p><nav>${nav.map(([id, label, ico]) => `<button data-nav="${id}" class="nav-item ${view === id ? "active" : ""}"><span aria-hidden="true">${icon(ico)}</span>${label}</button>`).join("")}</nav><div class="sidebar-note"><span class="leaf">✦</span><strong>慢慢来，也很棒。</strong><p>练习没有倒计时，<br>每一步都算数。</p></div><footer>数据保存在当前浏览器<br><span>v${h(import.meta.env.VITE_APP_VERSION)} · 本地学习空间</span></footer></aside><div class="workspace"><header class="topbar"><div class="breadcrumb">学习空间 <span>/</span> ${view === "practice" ? "口算练习" : view === "result" ? "练习结果" : (nav.find((n) => n[0] === view)?.[1] ?? "学习首页")}</div><div class="profile-tools">${selected ? `<label class="sr-only" for="profile-select">选择儿童档案</label><select id="profile-select" ${temporary ? "disabled" : ""}>${profiles.map((p) => `<option value="${p.id}" ${selected?.id === p.id ? "selected" : ""}>${h(p.nickname)} · ${gname(p.grade)}</option>`).join("")}</select>` : '<span class="quiet">还没有儿童档案</span>'}<span class="avatar">${h(selected?.nickname.slice(0, 1) ?? "＋")}</span></div></header>${temporary ? '<div class="banner warning">临时练习 · 刷新后会丢失，不计入正式每日记录。<button data-action="recover" class="text-button">恢复检查</button></div>' : ""}<main id="main">${body}</main><footer class="mobile-footer">老兵口算 · 每天一点进步</footer></div>`;
   app
     .querySelectorAll<HTMLElement>("[data-progress]")
     .forEach((el) => (el.style.width = Number(el.dataset.progress) + "%"));
@@ -656,7 +656,7 @@ async function print(answers = false) {
       });
   const el = document.createElement("div");
   el.id = "print-root";
-  el.innerHTML = `<h1>滚木口算 · ${answers ? "参考答案" : "口算题单"}</h1><p>${h(data.profileNickname)} · ${gname(data.gradeSnapshot)} · 编号 ${h(data.practiceId.slice(0, 8))}</p><div class="print-grid">${data.questions.map((q: QuestionLike) => `<div>${q.ordinal}.　${q.a} ${SYMBOL[q.op]} ${q.b} = ${answers ? q.expected : "________"}</div>`).join("")}</div>`;
+  el.innerHTML = `<h1>老兵口算 · ${answers ? "参考答案" : "口算题单"}</h1><p>${h(data.profileNickname)} · ${gname(data.gradeSnapshot)} · 编号 ${h(data.practiceId.slice(0, 8))}</p><div class="print-grid">${data.questions.map((q: QuestionLike) => `<div>${q.ordinal}.　${q.a} ${SYMBOL[q.op]} ${q.b} = ${answers ? q.expected : "________"}</div>`).join("")}</div>`;
   document.body.append(el);
   window.print();
   el.remove();
@@ -833,7 +833,7 @@ async function start() {
     await loadProfiles();
     if (!profiles.length)
       await ask(
-        "欢迎来到滚木口算",
+        "欢迎来到老兵口算",
         "学习记录只保存在当前浏览器；清理网站数据会删除记录。我们不上传昵称、答案或成绩。请定期导出备份。",
         "我知道了",
       );
