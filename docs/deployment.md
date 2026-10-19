@@ -28,3 +28,7 @@ GitHub Pages 托管网站，GitHub 和 Gitee 同步保存源代码及版本记�
 ## 复测
 
 本地 `npm run build` 后设置 TEST_PRODUCTION=1，执行 `npm run test:e2e -- e2e/app.spec.ts`。公开站设置 LIVE_BASE_URL=https://foggycry.github.io/software-engineering/ 后执行同一用例；此时不启动本地服务器。PLAYWRIGHT_BROWSER=chrome 可使用安装的 Chrome。测试均使用隔离浏览器上下文和虚构数据，不读取用户真实档案。性能/可靠性源码注入用例仅在本地开发服务器运行。
+
+## v0.1.2 名称更新
+
+正式产品名称为“滚木口算”（原“拾光口算”），继续由同一个 GitHub Pages 项目地址提供服务。此次更新不涉及源、数据库或备份格式变更，已有 Pages 用户无需迁移记录；旧 Sites 用户仍按上文导出/导入备份。旧站保留历史名称，不随本次构建更新。发布验证见 [v0.1.2 测试报告](test-report-v0.1.2.md)。

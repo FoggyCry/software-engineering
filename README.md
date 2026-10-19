@@ -1,12 +1,16 @@
-# 拾光口算 · 儿童学习口算练习系统
+# 滚木口算 · 儿童学习口算练习系统
 
 一至三年级的浏览器口算练习工具。生成题单、在线答题、自动批改、错题复习及历史记录均在本地完成。
 
-**公开试用地址**：https://foggycry.github.io/software-engineering/ （迁移部署状态和实际测试见 `docs/test-report-v0.1.1.md`）  
-**版本**：0.1.1  
+**公开试用地址**：https://foggycry.github.io/software-engineering/ （本次更名验证见 `docs/test-report-v0.1.2.md`）
+
+**版本**：0.1.2
+
 **源码与版本记录**：[GitHub](https://github.com/FoggyCry/software-engineering) · [Gitee](https://gitee.com/foggycry/software-engineering)
 
 华科软件工程作业。GitHub Pages 提供网站托管；GitHub 和 Gitee 同步保存源码及版本记录。
+
+v0.1.2 将产品名称由“拾光口算”改为“滚木口算”。正式网址、数据库和备份格式不变；在同一浏览器打开原 GitHub Pages 地址即可继续使用已有记录，无需因更名迁移。历史发布与测试证据保留原名称。
 
 ## 功能
 
@@ -85,6 +89,6 @@ G1支持20以内加减；G2支持100以内加减、表内乘除；G3支持1000�
 | `tests/`、`e2e/` | DT编号对应的规则、服务、浏览器与性能测试 |
 | `deliverables/` | 冻结需求v1.1和设计v1.1 |
 | `docs/changes.md` | 实现阶段与设计的差异及理由 |
-| `docs/test-report-v0.1.1.md` | 本次迁移验证及验收缺口；v0.1.0报告作为历史保留 |
+| `docs/test-report-v0.1.2.md` | 本次更名验证及验收缺口；v0.1.1迁移报告和v0.1.0报告作为历史保留 |
 
 可用性单次探测：`node scripts/check-site.mjs https://你的域名/`。若需满足NFR06，应在独立常在线环境每5分钟调度一次并保存完整30天记录；本次交付不伪造30天结果。

@@ -17,3 +17,7 @@
 来源：用户 2026-10-12 要求迁移至 GitHub Pages 并同步 GitHub/Gitee。涉及 FR12、NFR01/06/07、ARC-03、EXT 静态托管边界。冻结需求和设计原件保持原样，本说明是实施补充。
 
 原实现为 Sites 根路径托管；改为 GitHub Actions 构建和 GitHub Pages 项目子路径 /software-engineering/。部署流水线先测试后发布；不增加后端、身份服务或数据上传。Gitee 继续保存源码及版本记录，GitHub 新增相同历史。CSP meta 继续生效；Pages 自定义安全响应头不作为已实现功能。旧站保留，跨源数据通过 schemaVersion=1 JSON 备份人工转移。数据库字段、业务规则和需求编号均未改动。验收以新 URL 的实际运行结果为准，30天可用性重新从新站正式监测起算，不借用旧站记录。
+
+## IMPL07 / BRAND-01：v0.1.2 产品更名
+
+来源：用户 2026-10-19 要求替换“拾光口算”并同步 Gitee、GitHub Pages。新名称为“滚木口算”，影响 FR09 打印抬头、FR12 发布信息及 FR13 界面文案；业务需求编号和行为不变。部署地址仍为 https://foggycry.github.io/software-engineering/ ，数据库 children-arithmetic、IndexedDB 版本1、备份 schemaVersion=1 均不变。内部 npm 包标识保留，避免把历史工程标识误作用户可见品牌。历史需求/设计原件、历史测试证据与旧站不追溯改名。验证使用现有回归流程及标题、欢迎提示、导航、打印抬头和360px布局检查。

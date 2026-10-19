@@ -161,6 +161,7 @@ test("DT07/08 print is read-only and learning data has no network requests", asy
     .poll(() => page.evaluate(() => (window as any).printed))
     .toBeTruthy();
   const printed = await page.evaluate(() => (window as any).printed);
+  expect(printed).toContain("滚木口算 · 口算题单");
   expect(printed).toContain("________");
   expect(printed).not.toContain("9999");
   expect(await records(page)).toEqual(before);
@@ -194,6 +195,7 @@ test("PAGES01 profiles, history, secure context and base-scoped assets", async (
   });
   page.on("worker", (w) => workers.push(w.url()));
   await setup(page);
+  await expect(page).toHaveTitle("滚木口算 · 每天一点进步");
   expect(
     await page.evaluate(
       () => isSecureContext && typeof crypto.randomUUID === "function",
@@ -221,7 +223,7 @@ test("PAGES01 profiles, history, secure context and base-scoped assets", async (
   await page.getByRole("button", { name: "确认删除", exact: true }).click();
   await page.getByRole("button", { name: "家长模式", exact: true }).click();
   await expect(page.locator(".profile-row")).toHaveCount(1);
-  await page.getByRole("button", { name: "拾光口算首页", exact: true }).click();
+  await page.getByRole("button", { name: "滚木口算首页", exact: true }).click();
   await page.getByRole("button", { name: "开始练习", exact: false }).click();
   await expect(page.locator("#answer")).toBeVisible();
   const p = (await records(page))[0];

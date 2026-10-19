@@ -137,6 +137,9 @@ small {
   font-size: 22px;
   letter-spacing: 1px;
 }
+.brand > span {
+  white-space: nowrap;
+}
 .brand small {
   display: block;
   font-size: 9px;
@@ -145,6 +148,7 @@ small {
   margin-top: 5px;
 }
 .brand-mark {
+  flex-shrink: 0;
   display: grid;
   place-items: center;
   border-radius: 14px 14px 14px 4px;
@@ -1155,6 +1159,12 @@ dialog label {
   }
 }
 @media (max-width: 1150px) {
+  .brand {
+    font-size: 18px;
+  }
+  .brand small {
+    letter-spacing: 1px;
+  }
   .sidebar {
     width: 205px;
     padding: 30px 17px;
