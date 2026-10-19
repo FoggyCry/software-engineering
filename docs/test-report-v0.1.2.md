@@ -13,7 +13,16 @@
 
 ## 实际发布
 
-正式地址：https://foggycry.github.io/software-engineering/ 。本地通过后推送 GitHub Actions；线上部署、版本与公开浏览器复测结果将在实际完成后补充，当前不以工作流配置代替上线结论。
+正式地址：https://foggycry.github.io/software-engineering/ 。
+
+- GitHub Actions [39250417536](https://github.com/FoggyCry/software-engineering/actions/runs/39250417536) 构建和部署均成功；被测应用代码提交 `d8a7738`。
+- 2026-10-19 20:16（北京时间），公开地址返回 HTTP 200，页面标题为“滚木口算 · 每天一点进步”，界面版本为 v0.1.2，安全上下文有效。Chrome 155.0.8059.84。
+- 在真实公开地址执行相同 `e2e/app.spec.ts`：5 项通过、1 项跳过、0 项失败。覆盖范围及跳过原因同上。
+- 1440、1000、360px 三种宽度的品牌和页面均无水平溢出，截图已检查；新名称、木字标识与 GUNMU MATH 副标题正常显示。
+- 使用同一隔离浏览器目录：先在 v0.1.1 建立虚构档案“更名保留测试”并保存答案17；v0.1.2 上线后档案与草稿仍在，恢复并刷新后答案仍为17。过程中不清理 IndexedDB。页面脚本错误0条。
+- 已有浏览器 HTTP 缓存最初仍显示旧名称；使用禁用 HTTP 缓存的强制刷新后取得新版，数据保留。全新浏览器上下文的线上回归也已通过。用户如仍看到旧名，可按 Ctrl+F5 强制刷新，不要清除网站数据。
+- GitHub 与 Gitee 仓库网页均实际检查到新名称、v0.1.2 和正式 Pages 地址；代码采用普通快进推送，旧版本和标签不覆盖。
+- 结构化证据：[brand-v0.1.2-public.json](evidence/brand-v0.1.2-public.json)。截图仅使用隔离测试数据，保存在本地 work/brand-v0.1.2/。
 
 ## 验收边界
 

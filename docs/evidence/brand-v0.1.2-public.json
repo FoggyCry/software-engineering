@@ -1,0 +1,56 @@
+{
+  "seed": {
+    "mode": "seed",
+    "checkedAt": "2026-10-19T12:13:28.551Z",
+    "url": "https://foggycry.github.io/software-engineering/",
+    "status": 200,
+    "browser": "155.0.8059.84",
+    "title": "拾光口算 · 每天一点进步",
+    "version": "数据保存在当前浏览器v0.1.1 · 本地学习空间",
+    "secureContext": true,
+    "savedAnswer": "17",
+    "errors": []
+  },
+  "live": {
+    "mode": "live",
+    "checkedAt": "2026-10-19T12:16:20.189Z",
+    "url": "https://foggycry.github.io/software-engineering/",
+    "status": 200,
+    "browser": "155.0.8059.84",
+    "title": "滚木口算 · 每天一点进步",
+    "version": "数据保存在当前浏览器v0.1.2 · 本地学习空间",
+    "secureContext": true,
+    "savedAnswer": "17",
+    "errors": [],
+    "passed": true,
+    "httpCacheBypassed": true,
+    "checkedWidths": [
+      1440,
+      1000,
+      360
+    ],
+    "existingProfileAndDraftPreserved": true
+  },
+  "repos": [
+    {
+      "url": "https://gitee.com/foggycry/software-engineering",
+      "status": 200,
+      "newNamePresent": true,
+      "versionPresent": true,
+      "pagesURLPresent": true
+    },
+    {
+      "url": "https://github.com/FoggyCry/software-engineering",
+      "status": 200,
+      "newNamePresent": true,
+      "versionPresent": true,
+      "pagesURLPresent": true
+    }
+  ],
+  "actionsRun": "https://github.com/FoggyCry/software-engineering/actions/runs/39250417536",
+  "publicRegression": {
+    "passed": 5,
+    "skipped": 1,
+    "failed": 0
+  }
+}
