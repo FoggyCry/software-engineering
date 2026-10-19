@@ -12,7 +12,16 @@
 
 ## 实际发布
 
-正式地址：https://foggycry.github.io/software-engineering/ 。当前准备自动部署，线上结果完成后补充，不将本地通过等同于网站上线。
+正式地址：https://foggycry.github.io/software-engineering/ 。GitHub Actions [39251638411](https://github.com/FoggyCry/software-engineering/actions/runs/39251638411) 构建及部署均成功，被测应用代码为 `02be26f`。
+
+- 2026-10-19 20:24（北京时间）真实公开地址 HTTP 200，标题“马头口算 · 每天一点进步”，版本 v0.1.4，安全上下文有效。Chrome 155.0.8059.84。
+- 线上 `e2e/app.spec.ts` 回归：5项通过、1项旧站跨源迁移专项跳过、0项失败；覆盖上述主要业务功能。全新浏览器上下文获取新版成功。
+- 1440、1000、360px视口：名称与页面无水平溢出，移动端截图已目视检查。
+- 在同一隔离浏览器中，v0.1.1创建的虚构档案“更名保留测试”和已保存答案17，在此次更新后仍可恢复；重新加载后答案仍为17，页面脚本错误0条。
+- 历史浏览器会话验证仅禁用HTTP缓存，未删除IndexedDB。仍看到旧名称的用户可按 Ctrl+F5 强制刷新，不要清除网站数据。
+- GitHub与Gitee仓库网页均已检查到“马头口算”、v0.1.4与正式地址。
+- 结构化证据：[brand-v0.1.4-public.json](evidence/brand-v0.1.4-public.json)。本地截图位于 work/brand-v0.1.4/，仅包含隔离测试数据。
+
 
 ## 验收边界
 
